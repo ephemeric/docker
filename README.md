@@ -19,3 +19,9 @@ docker pull registry.ephemeric.lan:5000/alpine:latest
 ## Client
 
 /etc/docker/certs.d/SERVER:443/ca.crt
+
+root@worker-node01:~# cat  /etc/systemd/system/docker.service.d/proxy.conf
+[Service]
+Environment="HTTP_PROXY=http://proxy.ephemeric.lan:3128/"
+Environment="HTTPS_PROXY=http://proxy.ephemeric.lan:3128/"
+Environment="NO_PROXY=hostname.example.com,172.10.10.10"
