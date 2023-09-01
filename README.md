@@ -25,3 +25,5 @@ root@worker-node01:~# cat  /etc/systemd/system/docker.service.d/proxy.conf
 Environment="HTTP_PROXY=http://proxy.ephemeric.lan:3128/"
 Environment="HTTPS_PROXY=http://proxy.ephemeric.lan:3128/"
 Environment="NO_PROXY=hostname.example.com,172.10.10.10"
+
+curl https://proxy.ephemeric.lan/v2/_catalog
