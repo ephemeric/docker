@@ -3,9 +3,9 @@
 docker run -d \
   --restart=always \
   --name private-registry \
-  -v $PWD/i.crt:/i.crt \
-  -v $PWD/i.key:/i.key \
-  -v /media/data1/docker:/var/lib/registry/docker
+  -v $PWD/registry.ephemeric.lan.crt:/i.crt \
+  -v $PWD/registry.ephemeric.lan.key:/i.key \
+  -v /media/data1/docker:/var/lib/registry/docker \
   -e REGISTRY_HTTP_ADDR=0.0.0.0:443 \
   -e REGISTRY_HTTP_TLS_CERTIFICATE=/i.crt \
   -e REGISTRY_HTTP_TLS_KEY=/i.key \
