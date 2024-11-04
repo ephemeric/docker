@@ -27,3 +27,8 @@ Environment="HTTPS_PROXY=http://proxy.ephemeric.lan:3128/"
 Environment="NO_PROXY=hostname.example.com,172.10.10.10"
 
 curl https://proxy.ephemeric.lan/v2/_catalog
+# Docker
+
+SHELL [ "/bin/bash", "-c" ]
+ENV SHELL=/bin/bash
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
