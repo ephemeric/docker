@@ -1,0 +1,16 @@
+FROM almalinux:9.2
+
+RUN dnf -y install dnf-plugins-core epel-release && dnf -y config-manager --save --setopt=skip_missing_names_on_install=0 --setopt=skip_missing_names_on_update=0 && dnf -y install \
+python3-pip \
+python3-pip-wheel.noarch
+
+# See https://docs.docker.com/reference/dockerfile/#run---mounttypebind (source is `.`, read-only by default).
+# The mount precludes us from having to ADD/COPY files.
+# See .dockerignore.
+
+RUN --mount=type=bind,target=/app \
+    python3 -m pip install -r /app/requirements.txt && \
+    pyinstaller \
+    --onefile \
+    --add-data "/app/mydata:mydata" \
+    --exclude-module _bootlocale /app/main.py
